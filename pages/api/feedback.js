@@ -1,11 +1,11 @@
 import fs, { writeFileSync } from "fs";
 import path from "path";
 
-function buildFeedbackPath() {
+export function buildFeedbackPath() {
   return path.join(process.cwd(), "data", "feedback.json");
 }
 
-function ExtractFeedbackData(filePath) {
+export function ExtractFeedbackData(filePath) {
   const fileData = fs.readFileSync(filePath);
   const data = JSON.parse(fileData);
   return data;
@@ -14,12 +14,12 @@ function ExtractFeedbackData(filePath) {
 function handler(req, res) {
   if (req.method === "POST") {
     const email = req.body.email;
-    const feedback = req.body.text;
+    const feedbackText = req.body.text;
 
     const newFeedback = {
       id: new Date().toISOString(),
       email: email,
-      feedbackText: feedback,
+      text: feedbackText,
     };
 
     const filePath = buildFeedbackPath();

@@ -56,7 +56,7 @@ function HomePage() {
       <button onClick={loadFeedbackHandler}>Load Feedback</button>
       <ul>
         {feedbackItems.map((item) => (
-          <li>{item.feedbackText}</li>
+          <li>{item.text}</li>
         ))}
       </ul>
     </div>
